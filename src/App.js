@@ -1,27 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Insight from './pages/Insights';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <nav>
-        <ul className="navbar">
-          <li>Book a hotel now</li>
-          <li>Trip Approvals</li>
-          <li>Bookings</li>
-          <li>Insights & Dashboard</li>
-          <li>Payment & Invoices</li>
-        </ul>
-      </nav>
-      <h1></h1>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route exact path="/" component={Home} />
+        <Route path="/Insights" component={Insight} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
-
-
-
