@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Button, IconButton } from '@mui/material';
-import { AccountCircle } from '@mui/material';
+import { AccountCircle } from '@mui/icons-material';
 
 const Navbar = () => {
   return (
