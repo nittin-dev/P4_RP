@@ -12,6 +12,7 @@ const Navbar = () => {
         <Button color="inherit">Home</Button>
         <Button color="inherit">Rooms</Button>
         <Button color="inherit">About</Button>
+        <Button color="inherit">LoginPage</Button>
         <IconButton color="inherit">
           <AccountCircle />
         </IconButton>
