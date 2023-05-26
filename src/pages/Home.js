@@ -3,7 +3,7 @@ import { TextField, Button, Container, Typography } from '@mui/material';
 
 const App = () => {
   return (
-    <Container maxWidth="sm">
+    <Container>
       <Typography variant="h4" align="center" gutterBottom>
         Hotel Booking
       </Typography>
