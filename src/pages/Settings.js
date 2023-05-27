@@ -1,5 +1,5 @@
 import { TabContext, TabList, TabPanel } from '@mui/lab'
-import {  Card, CardContent, IconButton, Tab, TextField } from '@mui/material'
+import {  Autocomplete, Card, CardContent, IconButton, Tab, TableFooter, TablePagination, TextField } from '@mui/material'
 import Button from '@mui/material/Button';
 import React from 'react'
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -10,6 +10,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TableHead from '@mui/material/TableHead';
+import CircularProgress from '@mui/material/CircularProgress';
+import SearchIcon from '@mui/icons-material/Search';
+
 
 export default function Settings() {
     const [value, setValue] = React.useState('1');
@@ -21,6 +24,7 @@ export default function Settings() {
         setValue1(newValue);
       }
       const [text, setText] = React.useState('');
+      const options = ['Option 1', 'Option 2', 'Option 3'];
 
       
     
@@ -79,7 +83,32 @@ export default function Settings() {
       };
     
      
-
+      const [page, setPage] = React.useState(0);
+      const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    
+      const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+      };
+    
+      const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+      };
+    
+      const employees = [
+        {
+          id: 1,
+          details: 'Employee 1 details',
+          designation: 'Designation 1',
+          travelPolicy: 'Travel policy 1',
+          manager: 'Manager 1',
+          actions: 'Actions 1',
+        },
+        // Add more employees here
+      ];
+    
+      const emptyRows =
+        rowsPerPage - Math.min(rowsPerPage, employees.length - page * rowsPerPage);
 
 
 
@@ -208,6 +237,7 @@ export default function Settings() {
         </Card>
       </TabPanel>
       <TabPanel value="2">
+        <h5 className=''>USERS</h5>
         <Card className='mt-3'>
             <CardContent>
             <TabContext value={value1}>
@@ -220,32 +250,102 @@ export default function Settings() {
   <Tab label="In Queue" value="2" />
   <Tab label="Invited" value="3" />
 </TabList>
-    <TabPanel value="1" className='ps-5 ' sx={{width:"850px"}}>
-    <TableContainer component={Paper}>
-        <Table>
+    <TabPanel value="1" className='ps-5' sx={{width:"850px"}}>
+      <div className='row'>
+        <div className='col-6 pb-4'>
+    <Autocomplete
+        freeSolo
+        options={options}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Search"
+            variant="outlined"
+            placeholder='Search by Employee name,official email ID'
+            size="small"
+            InputProps={{
+              ...params.InputProps,
+              endAdornment: <SearchIcon />,
+            }}
+          />
+        )}
+      />
+      </div>
+      <div className='col-4 pb-4'>
+    <Autocomplete
+        freeSolo
+        options={options}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Search"
+            variant="outlined"
+            size="small"
+            placeholder='Select Department'
+            InputProps={{
+              ...params.InputProps,
+              endAdornment: <SearchIcon />,
+            }}
+          />
+        )}
+      />
+      </div>
+      </div>
+      <TableContainer component={Paper}>
+      <Table>
         <TableHead>
-            <TableRow>
-              <TableCell>Employee details</TableCell>
-              <TableCell>Designation</TableCell>
-              <tableCell>Travel policy</tableCell>
-              <TableCell>Manager</TableCell>
+          <TableRow>
+            <TableCell>Employee details</TableCell>
+            <TableCell>Designation</TableCell>
+            <TableCell>Travel policy</TableCell>
+            <TableCell>Manager</TableCell>
             <TableCell>Actions</TableCell>
-
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {/* Display the employees based on the current page and rowsPerPage */}
+          {(rowsPerPage > 0
+            ? employees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            : employees
+          ).map((employee) => (
+            <TableRow key={employee.id}>
+              <TableCell>{employee.details}</TableCell>
+              <TableCell>{employee.designation}</TableCell>
+              <TableCell>{employee.travelPolicy}</TableCell>
+              <TableCell>{employee.manager}</TableCell>
+              <TableCell>{employee.actions}</TableCell>
             </TableRow>
-          </TableHead>
-          <TableBody>
-            {/* {departmentrows.map((row, index) => ( */}
-              <TableRow>
-                
-               
-               
-              </TableRow>
-            {/* ))} */}
-          </TableBody>
-        </Table>
-      </TableContainer>
+          ))}
+
+          {/* Render empty rows if needed */}
+          {emptyRows > 0 && (
+            <TableRow style={{ height: 53 * emptyRows }}>
+              <TableCell colSpan={5} />
+            </TableRow>
+          )}
+        </TableBody>
+        <TableFooter>
+          <TableRow>
+            <TablePagination
+              rowsPerPageOptions={[5, 10, 25]}
+              colSpan={5}
+              count={employees.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              SelectProps={{
+                inputProps: { 'aria-label': 'rows per page' },
+                native: true,
+              }}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+            />
+          </TableRow>
+        </TableFooter>
+      </Table>
+    </TableContainer>
+
     </TabPanel>
-    <TabPanel value="2" className='ps-5 ' sx={{width:"850px"}}>
+    <TabPanel value="2" className='ps-5 '  sx={{width:"850px"}}>
         <h5>In Queue</h5>
       
         
