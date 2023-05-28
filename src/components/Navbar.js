@@ -1,24 +1,76 @@
-import React from 'react';
-import { AppBar, Toolbar, Typography, Button, IconButton } from '@mui/material';
-import { AccountCircle } from '@mui/icons-material';
+import React, {useState} from 'react'
+import './navbar.css'
+import {AiFillCloseCircle} from 'react-icons/ai'
+import {TbGridDots} from 'react-icons/tb'
+import {SiYourtraveldottv} from 'react-icons/si'
 
 const Navbar = () => {
-  return (
-    <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          Hotel Booking
-        </Typography>
-        <Button color="inherit">Home</Button>
-        <Button color="inherit">Rooms</Button>
-        <Button color="inherit">About</Button>
-        <Button color="inherit">LoginPage</Button>
-        <IconButton color="inherit">
-          <AccountCircle />
-        </IconButton>
-      </Toolbar>
-    </AppBar>
-  );
-};
 
-export default Navbar;
+  const [active, setActive]  = useState('navBar')
+  const showNav = ()=>{
+      setActive('navBar activeNavbar')
+  }
+  const removeNav = ()=>{
+      setActive('navBar')
+  }
+  
+  //code statement to add a background color to the header.
+  const [transparent, setTransparent] = useState('header')
+  const addBg = ()=>{
+    if(window.scrollY >= 10){
+      setTransparent('header activeHeader')
+    }else{
+      setTransparent('header')
+    }
+  }
+  window.addEventListener('scroll', addBg)
+
+  return (
+    <section className='navBarSection'>
+       <header className={transparent}>
+        
+          <div className="logoDiv">
+            <a href="#" className="logo flex"><h1><SiYourtraveldottv className='icon' />P4</h1></a>
+          </div>
+
+          <div className={active}>
+            <ul onClick={removeNav} className="navLists flex">
+              <li className="navItem">
+                <a href="#" className="navLink">Home</a>
+              </li>
+              <li className="navItem">
+                <a href="#" className="navLink">Products</a>
+              </li>
+              <li className="navItem">
+                <a href="#" className="navLink">Resources</a>
+               </li>
+              <li className="navItem">
+                <a href="#" className="navLink">Contact </a>
+              </li>
+              <li className="navItem">
+                <a href="#" className="navLink">Blog</a>
+              </li>
+              
+              <div className="headerBtns flex">
+              <button className="btn loginBtn">
+                <a href="#">Login</a>
+              </button>
+              <button className="btn">
+                <a href="#">Sign Up</a>
+              </button>
+              </div>
+            </ul>
+            <div onClick={removeNav} className="closeNavbar">
+                <AiFillCloseCircle className='icon'/>
+              </div>
+          </div>
+
+          <div onClick={showNav} className="toggleNavbar">
+            <TbGridDots className='icon'/>
+          </div>
+       </header>
+    </section>
+  )
+}
+
+export default Navbar
