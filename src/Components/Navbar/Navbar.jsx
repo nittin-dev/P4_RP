@@ -30,7 +30,7 @@ const Navbar = () => {
        <header className={transparent}>
         
           <div className="logoDiv">
-            <a href="#" className="logo flex"><h1><SiYourtraveldottv className='icon' />P4</h1></a>
+            <a href="#" className="logo flex"><h1>P4</h1></a>
           </div>
 
           <div className={active}>
@@ -39,16 +39,13 @@ const Navbar = () => {
                 <a href="#" className="navLink">Home</a>
               </li>
               <li className="navItem">
-                <a href="#" className="navLink">Products</a>
+                <a href="#" className="navLink">Bookings</a>
               </li>
               <li className="navItem">
-                <a href="#" className="navLink">Resources</a>
+                <a href="#" className="navLink">Insights & Dashboard</a>
                </li>
               <li className="navItem">
-                <a href="#" className="navLink">Contact </a>
-              </li>
-              <li className="navItem">
-                <a href="#" className="navLink">Blog</a>
+                <a href="#" className="navLink">Payment & Invoices</a>
               </li>
               
               <div className="headerBtns flex">
