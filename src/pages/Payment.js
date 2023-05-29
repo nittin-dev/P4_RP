@@ -75,7 +75,7 @@ export default function Payment() {
     setEndDate(date);
   };
   return (
-    <Container className='mt-4 pt-4 mb-4'>
+    <Container className='mb-4 innercontainer'>
         <Grid container  spacing={4}>
   <Card className='mt-2 ' style={{boxShadow: "rgb(207 202 202) 0px 0px 10px",border:"1px solid #1976d2"}}>
  

@@ -9,7 +9,7 @@
 }
 
 :root{
-    --PrimaryColor: hsl(239, 80%, 49%);
+    --PrimaryColor: #7862dc;
     --HoverColor: hsl(30, 1%, 37%); 
     --whiteColor: hsl(0, 0%, 100%);
     --blackColor: hsl(0, 0%, 18%);
@@ -87,14 +87,33 @@ li{
     line-height: 1.5rem;
     padding-bottom: .5rem;
 }
-
+.btnbg{
+    background: var(--PrimaryColor)!important;
+    border-radius:49px !important;
+}
 .secIntro p{
     font-size: 13px;
     color: var(--textColor);
     font-weight: 500;
 }
+.delete-icon {
+    color:#E21818;
+  }
+.tablist{
 
+}
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+color:#a58df8!important;
 
+}
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected{
+    color: #fff!important;
+    background-color:#7862dc!important;
+   
+}
+.css-10d9dml-MuiTabs-indicator{
+    background: #7862dc!important;
+}
 img, video{
 width: 100%;
 height: auto;
@@ -117,6 +136,9 @@ input{
 ::-webkit-scrollbar-thumb{
     background: var(--PrimaryColor);
     border-radius: 10px;
+}
+.innercontainer{
+padding-top: 100px;
 }
 
 @media screen and (min-width: 556px) {

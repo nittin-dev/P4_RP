@@ -12,6 +12,7 @@ import Paper from '@mui/material/Paper';
 import TableHead from '@mui/material/TableHead';
 import CircularProgress from '@mui/material/CircularProgress';
 import SearchIcon from '@mui/icons-material/Search';
+import Navbar from '../Components/Navbar/Navbar';
 
 
 export default function Settings() {
@@ -114,21 +115,31 @@ export default function Settings() {
 
 
   return (
-    <div className='container d-flex'>
+    <>
+    {/* <Navbar/> */}
+   
+    <div className='container d-flex innercontainer'>
         <TabContext value={value}>
-
     <TabList
       onChange={handleChange}
       aria-label="lab API tabs example"
       orientation="vertical"
+      
     >
-      <Tab label="GENERAL SETTINGS" value="1" />
-      <Tab label="Users" value="2" />
-      <Tab label="Manage GST" value="3" />
+      {/* <Card> */}
+        {/* <CardContent> */}
+<Tab label="GENERAL SETTINGS" className='tablist' value="1" />
+      <Tab label="Users" className='tablist' value="2" />
+      <Tab label="Manage GST" className='tablist' value="3" />
+        {/* </CardContent> */}
+      {/* </Card> */}
+      
     </TabList>
     <div>
-      <TabPanel value="1" className='ps-5 ' sx={{width:"850px"}}>
+      <TabPanel value="1" className='ps-5' >
         <h5>GENERAL SETTINGS</h5>
+        <Card className='mt-3'>
+            <CardContent>
         <Card className='mt-2'>
             
             <CardContent>
@@ -149,7 +160,7 @@ export default function Settings() {
                 </TableCell>
                 <TableCell>
                   <IconButton onClick={() => handleDeleteRow(index)}>
-                    <DeleteIcon />
+                  <DeleteIcon className="delete-icon" />
                   </IconButton>
                 </TableCell>
               </TableRow>
@@ -157,13 +168,13 @@ export default function Settings() {
           </TableBody>
         </Table>
       </TableContainer>
-      <Button variant="contained" onClick={handleAddRow}>
+      <Button className='btnbg mt-2'  variant="contained" onClick={handleAddRow}>
         Add
       </Button>
         </CardContent>
                 
         </Card>
-        <Card className='mt-2'>
+        <Card className='mt-2' >
             <CardContent>
             <h5>Admin</h5> 
             <p>Email IDs with whitelisted official domains allowed for platform login</p>
@@ -182,7 +193,7 @@ export default function Settings() {
                 </TableCell>
                 <TableCell>
                   <IconButton onClick={() => handleAdminDeleteRow(index)}>
-                    <DeleteIcon />
+                  <DeleteIcon className="delete-icon" />
                   </IconButton>
                 </TableCell>
               </TableRow>
@@ -190,7 +201,7 @@ export default function Settings() {
           </TableBody>
         </Table>
       </TableContainer>
-      <Button variant="contained" onClick={handleAdminAddRow}>
+      <Button className='btnbg mt-2' variant="contained" onClick={handleAdminAddRow}>
         Add
       </Button>
 
@@ -218,7 +229,7 @@ export default function Settings() {
                 </TableCell>
                 <TableCell>
                   <IconButton onClick={() => handleDepartmentDeleteRow(index)}>
-                    <DeleteIcon />
+                  <DeleteIcon className="delete-icon" />
                   </IconButton>
                 </TableCell>
               </TableRow>
@@ -226,7 +237,7 @@ export default function Settings() {
           </TableBody>
         </Table>
       </TableContainer>
-      <Button variant="contained" onClick={handleDepartmentAddRow}>
+      <Button className='btnbg mt-2' variant="contained" onClick={handleDepartmentAddRow}>
         Add
       </Button>
 
@@ -235,22 +246,28 @@ export default function Settings() {
         </CardContent>
                 
         </Card>
+        </CardContent>
+        </Card>
       </TabPanel>
       <TabPanel value="2">
         <h5 className=''>USERS</h5>
         <Card className='mt-3'>
-            <CardContent>
+            <CardContent >
             <TabContext value={value1}>
 
 <TabList
   onChange={handleChange1}
   aria-label="lab API tabs example"
 >
+
   <Tab label="Onboarded" value="1" />
   <Tab label="In Queue" value="2" />
   <Tab label="Invited" value="3" />
+
+ 
+  
 </TabList>
-    <TabPanel value="1" className='ps-5' sx={{width:"850px"}}>
+    <TabPanel value="1" className='ps-5' >
       <div className='row'>
         <div className='col-6 pb-4'>
     <Autocomplete
@@ -319,7 +336,7 @@ export default function Settings() {
 
           {/* Render empty rows if needed */}
           {emptyRows > 0 && (
-            <TableRow style={{ height: 53 * emptyRows }}>
+            <TableRow style={{ height: 23 * emptyRows }}>
               <TableCell colSpan={5} />
             </TableRow>
           )}
@@ -345,12 +362,12 @@ export default function Settings() {
     </TableContainer>
 
     </TabPanel>
-    <TabPanel value="2" className='ps-5 '  sx={{width:"850px"}}>
+    <TabPanel value="2" className='ps-5 '  >
         <h5>In Queue</h5>
       
         
     </TabPanel>
-    <TabPanel value="3" className='ps-5 ' sx={{width:"850px"}}>
+    <TabPanel value="3" className='ps-5 ' >
         <h5>In Queue</h5>
     </TabPanel>
 </TabContext>
@@ -365,5 +382,6 @@ export default function Settings() {
 
       
     </div>
+    </>
   )
 }

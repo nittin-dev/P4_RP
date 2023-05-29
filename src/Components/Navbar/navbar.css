@@ -1,5 +1,5 @@
 :root {
-  --PrimaryColor: hsl(224, 82%, 52%);
+  --PrimaryColor: #7862dc;
   --HoverColor: hsl(27, 5%, 36%);
   --whiteColor: hsl(0, 0%, 100%);
   --blackColor: hsl(0, 0%, 18%);
@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: transparent;
+  background: var(--PrimaryColor);
   width: 100%;
   height: var(--headerHeight);
   z-index: 1000;

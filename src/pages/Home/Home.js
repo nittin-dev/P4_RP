@@ -18,9 +18,9 @@ import 'aos/dist/aos.css'
            <p data-aos="fade-up" data-aos-duration="2500" className="subTitle">
              Travel to your favourite city !
            </p>
-           <button data-aos="fade-up" data-aos-duration="3000" className="btn">
+           {/* <button data-aos="fade-up" data-aos-duration="3000" className="btn">
                 <a href="#">Explore Now</a>
-              </button>
+              </button> */}
         </div>
 
         <div  className="homeCard grid">

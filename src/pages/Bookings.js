@@ -49,9 +49,9 @@ export default function Bookings() {
   };
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-      <Container maxWidth="md" className='mt-4 pt-4 mb-4'>
-        <Card className='mt-2' style={{ boxShadow: 'rgb(207 202 202) 0px 0px 10px', border: '1px solid #1976d2' }}>
+    <Box sx={{ display: 'flex', justifyContent: 'center' }} >
+      <Container maxWidth="md" className='mb-4 ' sx={{paddingTop:"80px"}}>
+        <Card className='mt-2 '  style={{ boxShadow: 'rgb(207 202 202) 0px 0px 10px', border: '1px solid #1976d2' }}>
           <CardContent>
             <Typography>
               <p className='mt-4 fw-bold'>BOOKINGS</p>
@@ -70,7 +70,7 @@ export default function Bookings() {
             </InputAdornment>
           ),
         }}
-        style={{ marginRight: '500px',width: '50%' }}
+        style={{ marginRight: '500px',width: isMobile ? '100%' : '50%' }}
       />
         <TabContext value={value}>
                   <TabList
