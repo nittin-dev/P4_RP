@@ -13,7 +13,7 @@ import 'aos/dist/aos.css'
       <div className="secContainer container">
         <div className="homeText">
            <h1 data-aos="fade-up" data-aos-duration="2000" className="title">
-            Plan Your Trip 
+            Plan Your Trip !!!
            </h1>
            <p data-aos="fade-up" data-aos-duration="2500" className="subTitle">
              Travel to your favourite city !
