@@ -3,6 +3,7 @@ import './navbar.css'
 import {AiFillCloseCircle} from 'react-icons/ai'
 import {TbGridDots} from 'react-icons/tb'
 import {SiYourtraveldottv} from 'react-icons/si'
+import {SlWallet } from 'react-icons/sl'
 
 const Navbar = () => {
 
@@ -50,11 +51,12 @@ const Navbar = () => {
               
               <div className="headerBtns flex">
               <button className="btn loginBtn">
+               <SlWallet classname="icon" fill="white"/>
+              </button>
+              <button className="btn loginBtn">
                 <a href="#">Login</a>
               </button>
-              <button className="btn">
-                <a href="#">Sign Up</a>
-              </button>
+              
               </div>
             </ul>
             <div onClick={removeNav} className="closeNavbar">

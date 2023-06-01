@@ -32,6 +32,12 @@ import 'aos/dist/aos.css'
               <label htmlFor="distance">Distance</label>
               <input type="text" placeholder='1 Kms'/>
            </div>
+
+           <div data-aos="fade-right" data-aos-duration="2000" className='locationDiv'>
+            <label htmlFor="date">Select your Date</label>
+            <div className='inputflex'><input type='date'/></div>
+           </div>
+
            <div data-aos="fade-right" data-aos-duration="3000" className="priceDiv">
               <label htmlFor="price">Price Range</label>
               <input type="text" placeholder='$100-$500'/>
