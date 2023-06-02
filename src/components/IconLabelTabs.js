@@ -23,7 +23,7 @@ export default function IconLabelTabs() {
     <Container style={{ display: 'flex', justifyContent: 'center' }}>
  
     <Tabs value={value} onChange={handleChange} aria-label="icon label tabs example">
-      <Tab icon={<HomeIcon />} label="Book a hotel now" />
+      <Tab icon={<HomeIcon />}  label="Book a hotel now" />
       <Tab icon={<FavoriteIcon />} label="Bookings" />
       <Tab icon={<InsightsIcon />} label="Insights and dashboard" />
       <Tab icon={<ReceiptIcon />} label="Payments and invoices" />

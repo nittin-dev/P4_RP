@@ -10,9 +10,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TableHead from '@mui/material/TableHead';
-import CircularProgress from '@mui/material/CircularProgress';
 import SearchIcon from '@mui/icons-material/Search';
-import Navbar from '../Components/Navbar/Navbar';
+// import Navbar from '../Components/Navbar/Navbar';
 
 
 export default function Settings() {

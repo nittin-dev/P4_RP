@@ -2,11 +2,11 @@ import React from 'react';
 import './App.css'
 import { BrowserRouter as Router, Switch, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home/Home';
-import Navbar from './Components/Navbar/Navbar'
+import Navbar from './components/Navbar/Navbar';
 import Insight from './pages/Insights';
 import  Payment  from './pages/Payment';
 import Settings  from './pages/Settings';
-import IconLabelTabs from './Components/IconLabelTabs';
+
 import Bookings from './pages/Bookings';
 import Popular from './pages/Popular/Popular';
 import SignInSide from './pages/LoginPage';

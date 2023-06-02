@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Container, Tab, Tabs, TextField,Grid } from '@mui/material';
+import { Container, Tab, Tabs, TextField,Grid} from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
@@ -11,7 +11,9 @@ import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from '@mui/icons-material/Search';
 import { Table, TableHead, TableBody, TableRow, TableCell} from '@mui/material';
 import Chip from '@mui/material/Chip';
-import { DatePicker, MobileDatePicker } from '@mui/lab';
+import { Dialog, DialogTitle, DialogContent, Button } from '@mui/material';
+import { DateRangePicker } from '@mui/lab';
+
 
 
 export default function Payment() {
@@ -64,15 +66,39 @@ export default function Payment() {
     console.info('You clicked the Chip.');
   };
 
+  const [open, setOpen] = React.useState(false);
   const [startDate, setStartDate] = React.useState(null);
   const [endDate, setEndDate] = React.useState(null);
 
-  const handleStartDateChange = (date) => {
-    setStartDate(date);
+  const handleOpen = () => {
+    setOpen(true);
   };
 
-  const handleEndDateChange = (date) => {
-    setEndDate(date);
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleDateChange = (date) => {
+    if (!startDate) {
+      setStartDate(date);
+    } else if (startDate && !endDate) {
+      if (date > startDate) {
+        setEndDate(date);
+        setOpen(false); // Automatically close the dialog after selecting the end date
+      } else {
+        setStartDate(date);
+      }
+    } else {
+      setStartDate(date);
+      setEndDate(null);
+    }
+  };
+  const [dtvalue, setdtValue] = React.useState([null, null]);
+
+ 
+
+  const handleClear = () => {
+    setdtValue([null, null]);
   };
   return (
     <Container className='mb-4 innercontainer'>
@@ -172,17 +198,32 @@ export default function Payment() {
   <div className="col-3" >
     <Chip label="45-60 days" variant="outlined" onClick={handleClick} />
   </div>
-  <div className="col-3">
+  {/* <div className="col-3">
     <Chip label="60-90 days" variant="outlined" onClick={handleClick} />
   </div>
   <div className="col-3">
     <Chip label="90-120 days" variant="outlined" onClick={handleClick} />
+  </div> */}
+  <div className="col-3">
+  <DateRangePicker
+        startText="Start Date"
+        endText="End Date"
+        value={dtvalue}
+        onChange={handleDateChange}
+        renderInput={(startProps, endProps) => (
+          <>
+            <TextField {...startProps} />
+            <TextField {...endProps} />
+          </>
+        )}
+      />
   </div>
 </div>
 
 </div>
 
                 <div className='col-3'>
+                  
                 <p className='fw-bold' style={{marginTop:"-35px"}}>Cumulative</p>
                 <Chip label="45+ days" variant="outlined" onClick={handleClick} style={{ marginRight: '5px' }} />
                 <Chip label="60+ days" variant="outlined" onClick={handleClick} style={{ marginRight: '5px' }} />
@@ -190,7 +231,8 @@ export default function Payment() {
                 
                 <div className='col-3'>
                 <p className='fw-bold' style={{marginTop:"-35px"}}>Date Range</p>
-                <Chip label="Custom" variant="outlined" onClick={handleClick} style={{ marginRight: '5px' }} />
+                {/* <Chip label="Custom" variant="outlined" onClick={handleClick} style={{ marginRight: '5px' }} /> */}
+             
                 {/* <DatePicker
         label="Start Date"
         value={startDate}
@@ -362,10 +404,14 @@ export default function Payment() {
           ))}
         </TableBody>
       </Table>
+    
     </div>
        
        
-     
+   
+      <Button variant="outlined" onClick={handleClear}>
+        Clear
+      </Button>
     
         
 

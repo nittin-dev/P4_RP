@@ -6,7 +6,7 @@ import {BsDot} from 'react-icons/bs'
 
 import img2 from '../../Assets/image (2).jpg'
 import img5 from '../../Assets/image (5).jpg'
-import img9 from '../../Assets/image (5).png'
+import img9 from '../../Assets/image (2).jpg'
 import img7 from '../../Assets/image (7).jpg'
 
 import Aos from 'aos'
