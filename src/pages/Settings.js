@@ -11,7 +11,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TableHead from '@mui/material/TableHead';
 import SearchIcon from '@mui/icons-material/Search';
-// import Navbar from '../Components/Navbar/Navbar';
+import { ExcelRenderer } from 'react-excel-renderer';
+import Navbar from '../components/Navbar/Navbar';
 
 
 export default function Settings() {
@@ -112,10 +113,23 @@ export default function Settings() {
 
 
 
-
+        const handleFileUpload = (event) => {
+          const fileObj = event.target.files[0];
+          ExcelRenderer(fileObj, (err, response) => {
+            if (err) {
+              console.log(err);
+            } else {
+              const { rows, cols } = response;
+              console.log(rows); // Array of rows from the Excel file
+              console.log(cols); // Array of columns from the Excel file
+              setadminRows(rows.length===0)
+            }
+          });
+        };
+        
   return (
     <>
-    {/* <Navbar/> */}
+    <Navbar/>
    
     <div className='container d-flex innercontainer'>
         <TabContext value={value}>
@@ -168,7 +182,7 @@ export default function Settings() {
         </Table>
       </TableContainer>
       <Button className='btnbg mt-2'  variant="contained" onClick={handleAddRow}>
-        Add
+        Add 
       </Button>
         </CardContent>
                 
@@ -203,7 +217,7 @@ export default function Settings() {
       <Button className='btnbg mt-2' variant="contained" onClick={handleAdminAddRow}>
         Add
       </Button>
-
+      <input type="file" onChange={handleFileUpload} />
       
 
         </CardContent>

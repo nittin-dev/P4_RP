@@ -3,17 +3,22 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Container, Tab, Tabs, TextField,Grid} from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridCloseIcon } from '@mui/x-data-grid';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+import IconButton from '@mui/material/IconButton';
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from '@mui/icons-material/Search';
 import { Table, TableHead, TableBody, TableRow, TableCell} from '@mui/material';
 import Chip from '@mui/material/Chip';
 import { Dialog, DialogTitle, DialogContent, Button } from '@mui/material';
-import { DateRangePicker } from '@mui/lab';
-
+import {useState} from 'react';
+import { DateRange } from 'react-date-range';
+import 'react-date-range/dist/styles.css'; // Import the styles for the date picker
+import 'react-date-range/dist/theme/default.css'; // Import the default theme for the date picker
+import CloseIcon from '@mui/icons-material/Close';
+import Navbar from '../components/Navbar/Navbar';
 
 
 export default function Payment() {
@@ -61,46 +66,42 @@ export default function Payment() {
     item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     item.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  const [showDateRange, setShowDateRange] = useState(false);
 
-  const handleClick = () => {
-    console.info('You clicked the Chip.');
+  const handleDateClick = () => {
+    setShowDateRange(true);
   };
+ 
+  const [dateRange, setDateRange] = useState([
+    {
+      startDate: new Date(),
+      endDate: null,
+      key: 'selection',
+    },
+  ]);
 
-  const [open, setOpen] = React.useState(false);
-  const [startDate, setStartDate] = React.useState(null);
-  const [endDate, setEndDate] = React.useState(null);
+  const handleRangeChange = (ranges) => {
+    setDateRange([ranges.selection]);
+  };
+  const [open, setOpen] = useState(false);
 
-  const handleOpen = () => {
+  const handlePopClick = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
   };
-
-  const handleDateChange = (date) => {
-    if (!startDate) {
-      setStartDate(date);
-    } else if (startDate && !endDate) {
-      if (date > startDate) {
-        setEndDate(date);
-        setOpen(false); // Automatically close the dialog after selecting the end date
-      } else {
-        setStartDate(date);
-      }
-    } else {
-      setStartDate(date);
-      setEndDate(null);
-    }
-  };
-  const [dtvalue, setdtValue] = React.useState([null, null]);
-
- 
-
+  const handleClick =()=>{
+    console.log('clicked');
+  }
   const handleClear = () => {
-    setdtValue([null, null]);
+    setDateRange([{ startDate: null, endDate: null, key: 'selection' }]);
   };
+
   return (
+    <>
+    <Navbar/>
     <Container className='mb-4 innercontainer'>
         <Grid container  spacing={4}>
   <Card className='mt-2 ' style={{boxShadow: "rgb(207 202 202) 0px 0px 10px",border:"1px solid #1976d2"}}>
@@ -198,28 +199,13 @@ export default function Payment() {
   <div className="col-3" >
     <Chip label="45-60 days" variant="outlined" onClick={handleClick} />
   </div>
-  {/* <div className="col-3">
+   <div className="col-3">
     <Chip label="60-90 days" variant="outlined" onClick={handleClick} />
   </div>
   <div className="col-3">
     <Chip label="90-120 days" variant="outlined" onClick={handleClick} />
-  </div> */}
-  <div className="col-3">
-  <DateRangePicker
-        startText="Start Date"
-        endText="End Date"
-        value={dtvalue}
-        onChange={handleDateChange}
-        renderInput={(startProps, endProps) => (
-          <>
-            <TextField {...startProps} />
-            <TextField {...endProps} />
-          </>
-        )}
-      />
-  </div>
+  </div> 
 </div>
-
 </div>
 
                 <div className='col-3'>
@@ -231,20 +217,35 @@ export default function Payment() {
                 
                 <div className='col-3'>
                 <p className='fw-bold' style={{marginTop:"-35px"}}>Date Range</p>
-                {/* <Chip label="Custom" variant="outlined" onClick={handleClick} style={{ marginRight: '5px' }} /> */}
-             
-                {/* <DatePicker
-        label="Start Date"
-        value={startDate}
-        onChange={handleStartDateChange}
-        renderInput={(params) => <TextField {...params} />}
-      />
-      <DatePicker
-        label="End Date"
-        value={endDate}
-        onChange={handleEndDateChange}
-        renderInput={(params) => <TextField {...params} />}
-      /> */}
+                <Chip label="Custom" variant="outlined" onClick={handlePopClick} style={{ marginRight: '5px' }} />
+           {/* Date Picker */}
+           <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Date Picker
+        {open
+         ? (
+        <IconButton
+          aria-label="close"
+          onClick={handleClose}
+          sx={{
+            position: 'absolute',
+            right: 8,
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      ) : null}
+        </DialogTitle>
+        <DialogContent>
+          <DateRange
+            // editableDateInputs={true}
+            onChange={handleRangeChange}
+            moveRangeOnFirstSelection={false}
+            ranges={dateRange}
+          />
+        </DialogContent>
+      </Dialog>
                 </div>
                 </div>
               </div>
@@ -406,9 +407,7 @@ export default function Payment() {
       </Table>
     
     </div>
-       
-       
-   
+      
       <Button variant="outlined" onClick={handleClear}>
         Clear
       </Button>
@@ -425,6 +424,7 @@ export default function Payment() {
   </Card> */}
   </Grid>
 </Container>
+</>
 
   )
 }

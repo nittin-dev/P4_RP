@@ -5,12 +5,12 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    transition: .3s ease;
+    /* transition: .3s ease; */
 }
 
 :root{
     --PrimaryColor: #7862dc;
-    --HoverColor: hsl(30, 1%, 37%); 
+    /* --HoverColor: hsl(30, 1%, 37%);  */
     --whiteColor: hsl(0, 0%, 100%);
     --blackColor: hsl(0, 0%, 18%);
     --textColor: hsl(240, 1%, 48%);

@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import './home.css'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
+import Navbar from '../../components/Navbar/Navbar'
  
  const Home = () => {
     useEffect(()=>{
@@ -9,6 +10,9 @@ import 'aos/dist/aos.css'
     }, [])
  
    return (
+    <>
+     <Navbar/>
+    
     <section className='home'>
       <div className="secContainer container">
         <div className="homeText">
@@ -46,6 +50,7 @@ import 'aos/dist/aos.css'
         </div>
       </div>
     </section>
+    </>
    )
  }
  
