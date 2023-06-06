@@ -96,8 +96,6 @@ const Navbar = () => {
                 
               </li>
               <li className="navItem">
-               </li>
-              <li className="navItem">
                 <Link to='/payment' className='navLink'>Payment & Invoices</Link>
               </li>
               

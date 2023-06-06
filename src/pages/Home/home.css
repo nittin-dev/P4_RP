@@ -102,6 +102,8 @@
   font-weight: 600;
 }
 
+
+
 @media screen and (min-width: 480px) {
   .home .secContainer .homeCard {
     bottom: -18%;

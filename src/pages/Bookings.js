@@ -10,7 +10,7 @@ import DownloadIcon from '@mui/icons-material/Download';
 import Button from '@mui/material/Button';
 import '../App.css';
 import { saveAs as fileDownload } from 'file-saver';
-import Navbar from '../components/Navbar/Navbar';
+import Navbar from '../Components/Navbar/Navbar';
 
 
 

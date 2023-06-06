@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css'
 import { BrowserRouter as Router, Switch, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home/Home';
-import Navbar from './components/Navbar/Navbar';
+import Navbar from './Components/Navbar/Navbar';
 import Insight from './pages/Insights';
 import  Payment  from './pages/Payment';
 import Settings  from './pages/Settings';
@@ -13,11 +13,19 @@ import SignInSide from './pages/LoginPage';
 import FormDialog from './pages/gstmangement';
 
 const App = () => {
+  function HomeComponent(){
+    return (
+      <div>
+      <Home></Home>
+      <Popular></Popular>
+      </div>
+    )
+  }
   return (
     <>
     <Router>
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/' element={<HomeComponent/>}/>
         <Route path='/Bookings' element={<Bookings/>}/>
         <Route path='/login' element={<SignInSide/>}></Route>
         <Route path='/Payment' element={<Payment/>}/>

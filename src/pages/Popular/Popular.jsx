@@ -65,10 +65,10 @@ const Data = [
 
           <div data-aos="fade-right" data-aos-duration="2500" className="textDiv">
           <h2 className='secTitle'>
-          Popular Destinations
+        Recents
           </h2>
           <p>
-          From historical cities to natural specteculars, come see the best of the world!
+          Your Recent Destinations 
           </p>
           </div>
 

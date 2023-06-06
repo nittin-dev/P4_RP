@@ -2,8 +2,10 @@ import React, {useEffect} from 'react'
 import './home.css'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
-import Navbar from '../../components/Navbar/Navbar'
- 
+import Navbar from '../../Components/Navbar/Navbar'
+import { DateRangePicker } from 'rsuite';
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
  const Home = () => {
     useEffect(()=>{
       Aos.init({duration: 2000})
@@ -44,8 +46,12 @@ import Navbar from '../../components/Navbar/Navbar'
 
            <div data-aos="fade-right" data-aos-duration="3000" className="priceDiv">
               <label htmlFor="price">Price Range</label>
-              <input type="text" placeholder='$100-$500'/>
+
+              <input type="range" max='100000' min='1000'/>
            </div>
+        
+
+          
            <button data-aos="fade-left" data-aos-duration="3500" className='btn'>Search</button>
         </div>
       </div>

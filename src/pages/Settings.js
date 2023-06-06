@@ -12,7 +12,7 @@ import Paper from '@mui/material/Paper';
 import TableHead from '@mui/material/TableHead';
 import SearchIcon from '@mui/icons-material/Search';
 import { ExcelRenderer } from 'react-excel-renderer';
-import Navbar from '../components/Navbar/Navbar';
+import Navbar from '../Components/Navbar/Navbar';
 
 
 export default function Settings() {
