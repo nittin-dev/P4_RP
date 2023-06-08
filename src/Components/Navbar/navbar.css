@@ -10,7 +10,12 @@
   --inputColor: hsl(330, 12%, 97%);
   --boxShadow: box-shadow: 0 2px 8px 2px rgba(178, 178, 178, 0.189);
 }
-
+.css-187mznn-MuiSlider-root{
+  color: var(--PrimaryColor)!important;
+}
+a{
+  color: #fff!important;
+}
 .header {
   position: fixed;
   display: flex;
@@ -36,7 +41,7 @@
 }
 @media screen and (max-width: 768px) {
   .header .navBar {
-    background: var(--greyBg);
+    /* background: var(--greyBg); */
     position: absolute;
     height: -webkit-max-content;
     height: -moz-max-content;
@@ -77,6 +82,7 @@
   }
   .header .navBar .navLists .headerBtns .btn a {
     font-weight: 600;
+    color: #fff;
   }
   .header .navBar .navLists .headerBtns .btn:hover a {
     color: var(--whiteColor);
@@ -87,10 +93,10 @@
     color: var(--PrimaryColor);
   }
   .header .navBar .navLists .headerBtns .loginBtn a {
-    color: var(--PrimaryColor);
+    color: #fff;
   }
   .header .navBar .navLists .headerBtns .loginBtn:hover {
-    background: var(--HoverColor);
+    /* background: var(--HoverColor); */
   }
   .header .navBar .navLists .headerBtns .loginBtn:hover a {
     color: var(--whiteColor);

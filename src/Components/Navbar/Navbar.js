@@ -10,7 +10,8 @@ import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { Settings as SettingsIcon } from '@mui/icons-material';
 
 const Navbar = () => {
 
@@ -93,6 +94,10 @@ const Navbar = () => {
               </li>
               <li className="navItem">
                 <Link to='/Bookings' className='navLink'>Bookings</Link>
+                
+              </li>
+              <li className="navItem">
+                <Link to='/Insights' className='navLink'>Insights</Link>
                 
               </li>
               <li className="navItem">
@@ -208,9 +213,13 @@ const Navbar = () => {
 </Table>
 </Box>
 </Drawer>
-              <button className="btn loginBtn">
-                <a href="#">Login</a>
-              </button>
+<div className="loginBtn">
+<Link sx={{color:"#fff"}} to="/settings">
+      <IconButton color="#fff">
+        <SettingsIcon />
+      </IconButton>
+    </Link>
+    </div>
               
               </div>
             </ul>

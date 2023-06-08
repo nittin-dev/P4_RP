@@ -12,7 +12,7 @@ import Paper from '@mui/material/Paper';
 import TableHead from '@mui/material/TableHead';
 import SearchIcon from '@mui/icons-material/Search';
 import { ExcelRenderer } from 'react-excel-renderer';
-import Navbar from '../Components/Navbar/Navbar';
+import Navbar from '../components/Navbar/Navbar';
 
 
 export default function Settings() {
@@ -32,15 +32,23 @@ export default function Settings() {
       const handleChangeText = (event) => {
         setText(event.target.value);
       };
-      const [rows, setRows] = React.useState([]);
-      const [adminrows, setadminRows] = React.useState([]);
-      const [departmentrows, setdepartmentRows] = React.useState([]);
+      const [rows, setRows] = React.useState(['gmail.com', 'hummingbird.com']);
+      const [adminrows, setadminRows] = React.useState(['Ram','kumar']);
+      const [departmentrows, setdepartmentRows] = React.useState(['Finanace','HR']);
 
     
     
       const handleTextChange = (index, value) => {
+        // Update the value of a specific row
         const updatedRows = [...rows];
         updatedRows[index] = value;
+        setRows(updatedRows);
+      };
+    
+      const handleDeleteRow = (index) => {
+        // Delete a specific row
+        const updatedRows = [...rows];
+        updatedRows.splice(index, 1);
         setRows(updatedRows);
       };
 
@@ -55,7 +63,7 @@ export default function Settings() {
         setdepartmentRows(updatedRows);
       };
       const handleAddRow = () => {
-        setRows([...rows, '']);
+        setRows([...rows,'']);
       };
       const handleAdminAddRow = () => {
         setadminRows([...adminrows, '']);
@@ -65,11 +73,6 @@ export default function Settings() {
         setdepartmentRows([...departmentrows, '']);
       };
     
-      const handleDeleteRow = (index) => {
-        const updatedRows = [...rows];
-        updatedRows.splice(index, 1);
-        setRows(updatedRows);
-      };
 
       const handleAdminDeleteRow = (index) => {
         const updatedRows = [...adminrows];
@@ -159,28 +162,34 @@ export default function Settings() {
             <h5>Whitelisted email domains</h5> 
             <p>Email IDs with whitelisted official domains allowed for platform login</p>
             <TableContainer component={Paper}>
-        <Table>
-          <TableBody>
-            {rows.map((row, index) => (
-              <TableRow key={index}>
-                <TableCell>
-                  <TextField
-                    value={row}
-                    onChange={(e) => handleTextChange(index, e.target.value)}
-                    variant="outlined"
-                    sx={{ width: '100%' }}
-                  />
-                </TableCell>
-                <TableCell>
-                  <IconButton onClick={() => handleDeleteRow(index)}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Email Domains</TableCell>
+            <TableCell>Action</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row, index) => (
+            <TableRow key={index}>
+              <TableCell>
+                <TextField
+                  value={row}
+                  onChange={(e) => handleTextChange(index, e.target.value)}
+                  variant="outlined"
+                  fullWidth
+                />
+              </TableCell>
+              <TableCell>
+                <IconButton onClick={() => handleDeleteRow(index)}>
                   <DeleteIcon className="delete-icon" />
-                  </IconButton>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+                </IconButton>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
       <Button className='btnbg mt-2'  variant="contained" onClick={handleAddRow}>
         Add 
       </Button>
@@ -193,6 +202,12 @@ export default function Settings() {
             <p>Email IDs with whitelisted official domains allowed for platform login</p>
             <TableContainer component={Paper}>
         <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Admins</TableCell>
+            <TableCell>Action</TableCell>
+          </TableRow>
+        </TableHead>
           <TableBody>
             {adminrows.map((row, index) => (
               <TableRow key={index}>
@@ -229,6 +244,12 @@ export default function Settings() {
             <p>Enter list of designations in your organization</p>
             <TableContainer component={Paper}>
         <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Departments</TableCell>
+            <TableCell>Action</TableCell>
+          </TableRow>
+        </TableHead>
           <TableBody>
             {departmentrows.map((row, index) => (
               <TableRow key={index}>

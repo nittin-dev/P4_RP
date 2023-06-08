@@ -53,17 +53,21 @@ const Data = [
 ]
 
  
- const Popular = () => {
+ const Popular = ({recentsearch}) => {
       useEffect(()=>{
+        console.log(recentsearch)
         Aos.init({duration: 2000})
     }, [])
    return (
+    <>
+    {recentsearch &&
+      
      <section className='popular section container'>
       <div className="secContainter">
 
         <div className="secHeader flex">
 
-          <div data-aos="fade-right" data-aos-duration="2500" className="textDiv">
+          <div data-aos="fade-right" data-aos-duration="1500" className="textDiv">
           <h2 className='secTitle'>
         Recents
           </h2>
@@ -72,7 +76,7 @@ const Data = [
           </p>
           </div>
 
-          <div data-aos="fade-left" data-aos-duration="2500" className="iconsDiv flex">
+          <div data-aos="fade-left" data-aos-duration="1500" className="iconsDiv flex">
             <BsArrowLeftShort className="icon leftIcon"/>
             <BsArrowRightShort className="icon"/>
           </div>
@@ -130,6 +134,8 @@ const Data = [
         </div>
       </div>
      </section>
+ }
+     </>
    )
  }
  

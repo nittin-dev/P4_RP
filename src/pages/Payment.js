@@ -18,7 +18,7 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // Import the styles for the date picker
 import 'react-date-range/dist/theme/default.css'; // Import the default theme for the date picker
 import CloseIcon from '@mui/icons-material/Close';
-import Navbar from '../Components/Navbar/Navbar';
+import Navbar from '../components/Navbar/Navbar';
 
 
 export default function Payment() {

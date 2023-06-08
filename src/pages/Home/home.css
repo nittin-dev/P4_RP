@@ -11,6 +11,12 @@
   --boxShadow: box-shadow: 0 2px 8px 2px rgba(178, 178, 178, 0.189);
 }
 
+.rangeValues {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .home {
   height: 70vh;
   background:#7862dc;
@@ -44,6 +50,61 @@
 }
 .home .secContainer .homeText .btn {
   padding: 0.6rem 1.5rem;
+}
+.btn{
+  color: #fff;
+}
+datePickerOverlay {
+  position: absolute;
+  z-index: 999;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.datePickerOverlay:before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-bottom-color: #ffffff;
+}
+
+.datePickerContainer {
+  position: relative;
+}
+
+.datePickerContainer input {
+  cursor: pointer;
+}
+.datePickerOverlay {
+  position: absolute;
+  z-index: 999;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.datePickerOverlay:before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-bottom-color: #ffffff;
+}
+
+.datePickerContainer {
+  position: relative;
+}
+
+.datePickerContainer input {
+  cursor: pointer!important;
 }
 .home .secContainer .homeCard {
   width: 80%;

@@ -10,7 +10,9 @@ import DownloadIcon from '@mui/icons-material/Download';
 import Button from '@mui/material/Button';
 import '../App.css';
 import { saveAs as fileDownload } from 'file-saver';
-import Navbar from '../Components/Navbar/Navbar';
+import Navbar from '../components/Navbar/Navbar';
+
+
 
 
 
@@ -97,6 +99,20 @@ export default function Bookings() {
       color: '#fff'
     }
   };
+  React.useEffect(() => {
+    const handleClick = (event) => {
+      // Handle click event here
+      console.log('Screen clicked!');
+    };
+
+    // Attach click event listener to the document
+    document.addEventListener('click', handleClick);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+  }, []);
 
   return (
     <>
