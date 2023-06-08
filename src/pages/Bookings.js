@@ -168,7 +168,7 @@ export default function Bookings() {
                       <Tab label="Upcoming" value="3" />
                     </TabList>
                     <TabPanel value="1">
-                      {filteredRows.length === 0 ? (
+                      {filteredRows.length === 0  ? (
                         <div className="text-center mt-2">No past bookings.</div>
                       ) : (
                         <div style={{ height: 400, width: '100%' }}>
