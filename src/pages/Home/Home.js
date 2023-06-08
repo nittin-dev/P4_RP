@@ -8,7 +8,7 @@ import { DateRange } from "react-date-range";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import axios from 'axios';
-import { Box, Button, Card, CardContent, Checkbox, Rating, Skeleton } from '@mui/material';
+import { Box, Button, Card, CardContent, Checkbox, Rating, Skeleton, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import Slider from '@mui/material/Slider';
 import Popular from '../Popular/Popular';
 import Navbar from '../../components/Navbar/Navbar';
@@ -34,6 +34,9 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+
+
+
 
  const Home = () => {
   function valuetext(value) {
@@ -63,7 +66,10 @@ import CloseIcon from '@mui/icons-material/Close';
     const [locationlist,setlocationlist]=React.useState([])
   const [location,setlocation]=React.useState([{locationname:"",lat:"",lon:""}])
   const [selectedLocation, setSelectedLocation] = React.useState(null);
- 
+  const [isMobile, setIsMobile] = React.useState(false);
+  const [state, setState] = React.useState({
+    right: false,
+  });
   
   const handleSelect = (event, value) => {
     setSelectedLocation(value);
@@ -118,10 +124,37 @@ import CloseIcon from '@mui/icons-material/Close';
   };
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const toggleDrawer = () => {
-    setIsOpen(!isOpen);
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    setState({ ...state, [anchor]: open });
   };
-  
+  const carouselItems = [
+    {
+      title: 'First Slide',
+      description: 'Description for first slide',
+     
+    },
+    {
+      title: 'Second Slide',
+      description: 'Description for second slide',
+      imageUrl: 'https://example.com/image2.jpg',
+    },
+    {
+      title: 'Third Slide',
+      description: 'Description for third slide',
+      
+    },
+  ];
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
    return (
     <>
     <Navbar/>
@@ -491,7 +524,7 @@ import CloseIcon from '@mui/icons-material/Close';
           <div className='col-12 col-md-9'>
   <Card>
     <CardContent>
-      <div>Content for the right card</div>
+      <div>Hotel</div>
       <div className='mt-3'>
         <div className="row">
           <div className='col-12 col-md-4'>
@@ -537,7 +570,7 @@ import CloseIcon from '@mui/icons-material/Close';
             <span><DoneIcon color='success'/>100% GST invoice</span><br/>
             <span><DoneIcon color='success'/>Free cancellation till 11 Jul'23 11:59 AM</span><br/>
             <h5 className='mt-1'>₹1,100/night</h5>
-            <button className='btn' onClick={toggleDrawer}>Select Room</button>
+            <button className='btn' onClick={toggleDrawer('right', true)}>Select Room</button>
           </div>
         </div>
       </div>
@@ -545,7 +578,7 @@ import CloseIcon from '@mui/icons-material/Close';
   </Card>
   <Card>
     <CardContent>
-      <div>Content for the right card</div>
+      <div>Hotel</div>
       <div className='mt-3'>
         <div className="row">
           <div className='col-12 col-md-4'>
@@ -591,7 +624,7 @@ import CloseIcon from '@mui/icons-material/Close';
             <span><DoneIcon color='success'/>100% GST invoice</span><br/>
             <span><DoneIcon color='success'/>Free cancellation till 11 Jul'23 11:59 AM</span><br/>
             <h5 className='mt-1'>₹1,100/night</h5>
-            <button className='btn' onClick={toggleDrawer}>Select Room</button>
+            <button className='btn' onClick={toggleDrawer('right', true)}>Select Room</button>
           </div>
         </div>
       </div>
@@ -600,7 +633,7 @@ import CloseIcon from '@mui/icons-material/Close';
   
   <Card>
     <CardContent>
-      <div>Content for the right card</div>
+      <div>Hotel</div>
       <div className='mt-3'>
         <div className="row">
           <div className='col-12 col-md-4'>
@@ -663,14 +696,60 @@ import CloseIcon from '@mui/icons-material/Close';
  }
     </div>
 
-    <Drawer anchor="right" open={isOpen} onClose={toggleDrawer} PaperProps={{ style: { width: 1000 } }}>
+    {/* <Drawer anchor="right" open={isOpen} onClose={toggleDrawer} PaperProps={{ style: { width: 1000 } }}>
            <div style={{background:"blue"}}>
             <IconButton onClick={toggleDrawer}>
               <CloseIcon />
             </IconButton>
           </div>
    
-    </Drawer>
+    </Drawer> */}
+    <Drawer
+        anchor={isMobile ? 'bottom' : 'right'}
+        open={state['right']}
+        onClose={toggleDrawer('right', false)}
+        PaperProps={{ style: { width: 1000 } }}
+      >
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 2,backgroundColor:'#7862dc'}}>
+          <Typography variant="h6" color={"#fff"}>Hotel Sam Residency</Typography>
+          <IconButton onClick={toggleDrawer('right', false)}>
+            <CloseIcon htmlColor={'#fff'} />
+          </IconButton>
+        </Box>
+
+    <Table className='mt-3'>
+  <TableHead>
+    <TableRow>
+      <TableCell style={{ backgroundColor: '#f5f5f5', fontWeight: 'bold' }}>Hotel Name</TableCell>
+      <TableCell style={{ backgroundColor: '#f5f5f5', fontWeight: 'bold' }}>Travellers</TableCell>
+      <TableCell style={{ backgroundColor: '#f5f5f5', fontWeight: 'bold' }}>Check-in/Check-out date</TableCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableCell>Hotel Sam Residency</TableCell>    
+      <TableCell>2</TableCell>
+      <TableCell>09 Jun - 10 Jun</TableCell>
+    </TableRow>
+
+    </TableBody>
+    </Table>
+
+     <div className='row justify-content-center'>
+      <div className='col-6'>
+      
+            </div>
+            </div>
+
+
+    
+
+
+        
+
+
+      
+</Drawer>
 
 
     

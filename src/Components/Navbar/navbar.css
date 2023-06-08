@@ -67,7 +67,7 @@ a{
     padding: 0.5rem 0;
   }
   .header .navBar .navLists .navItem .navLink {
-    color: var(--textColor);
+    /* color: var(--textColor); */
     font-size: 0.9rem;
     font-weight: 600;
   }
@@ -123,7 +123,7 @@ a{
 }
 
 .activeHeader {
-  background: var(--textColor);
+  /* background: var(--textColor); */
   box-shadow: var(--boxShadow);
 }
 
