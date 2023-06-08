@@ -216,7 +216,7 @@ const Navbar = () => {
 <div className="loginBtn">
 <Link sx={{color:"#fff"}} to="/settings">
       <IconButton color="#fff">
-        <SettingsIcon />
+        <SettingsIcon sx = {{color:'white'}} />
       </IconButton>
     </Link>
     </div>

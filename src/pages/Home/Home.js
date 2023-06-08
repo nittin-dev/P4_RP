@@ -684,11 +684,7 @@ import CloseIcon from '@mui/icons-material/Close';
         </div>
       </div>
     </CardContent>
-  </Card>
-
-
-           
-            
+  </Card>     
           </div>
         </div>
       </CardContent>
